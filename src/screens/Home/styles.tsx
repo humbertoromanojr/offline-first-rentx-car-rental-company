@@ -8,6 +8,14 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background_primary};
 `;
 
+export const Header = styled.View`
+  width: 100%;
+  height: 113px;
+  justify-content: start;
+
+  background-color: ${({ theme }) => theme.colors.header};
+`;
+
 export const MyCarsButton = styled(TouchableOpacity)`
   width: 60px;
   height: 60px;
