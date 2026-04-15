@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1u-J5lvj7EH76_gp7eUKwQrM7fR3w0Si2" alt="" width="100%" border="0" />
+  <img src="https://drive.google.com/uc?export=view&id=1HL2PVLF-6NHVNqB-KX4Vahy_uQVOfa6h" alt="" width="100%" border="0" />
 <br>
 
 R E N T X - offline-first app
@@ -24,9 +24,27 @@ R E N T X - offline-first app
   <br /><br />
 
 - [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [Expo](https://expo.dev/)
-- [Lucide Icons](https://lucide.dev/)
-- [Async Storage](https://docs.expo.dev/versions/latest/sdk/async-storage/)
+  - [Google Signin](https://docs.expo.dev/guides/google-authentication/)
+  - [Expo Web Browser](https://docs.expo.dev/versions/v49.0.0/sdk/webbrowser/)
+  - [Expo Svg](https://docs.expo.dev/versions/latest/sdk/svg/)
+  - [Expo Image](https://docs.expo.dev/versions/latest/sdk/image/)
+  - [Netinfo](https://docs.expo.dev/versions/latest/sdk/netinfo/)
+  - [Async Storage](https://docs.expo.dev/versions/latest/sdk/async-storage/)
+  - [Location](https://docs.expo.dev/versions/latest/sdk/location/)
+  - [Map View](https://docs.expo.dev/versions/latest/sdk/map-view/)
+  - [Task Manager](https://docs.expo.dev/versions/latest/sdk/task-manager/)
+- [Styled Components](https://styled-components.com/docs)
+- [Dotenv](https://github.com/goatandsheep/react-native-dotenv)
+- [MongoDB Atlas](https://mongodb.com)
+- [RealmDB](https://www.mongodb.com/docs/realm/sdk/react-native/install/)
+- [Phosphor](https://github.com/duongdev/phosphor-react-native)
+- [React Navigation](https://reactnavigation.org/docs/getting-started/)
+- [Get Random Values](https://github.com/LinusU/react-native-get-random-values)
+- [Dayjs](https://day.js.org/docs/en/installation/node-js)
+- [React Native keyboard Aware Scroll View](https://github.com/APSL/react-native-keyboard-aware-scroll-view)
+- [React Native Toast Message](https://github.com/calintamas/react-native-toast-message)
 
 ## Demonstration
 
