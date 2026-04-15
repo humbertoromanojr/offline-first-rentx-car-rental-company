@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
-    "@types/styled-components-react-native": "^5.2.5",
     "typescript": "~5.9.2"
   },
   "private": true
