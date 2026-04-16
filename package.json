@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
+    "@types/react-native-calendars": "^1.1264.7",
     "react-native-svg-transformer": "^1.5.3",
     "typescript": "~5.9.2"
   },
