@@ -4,7 +4,8 @@ export const colors = {
   background_primary: "#f4f5f6",
   background_secondary: "#ffffff",
 
-  text: "#7a7a80",
+  text: "#ffffff",
+  textHeader: "#c8b6b6",
   text_detail: "#aeaeb3",
   title: "#47474d",
 
