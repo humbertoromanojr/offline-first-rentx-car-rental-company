@@ -29,6 +29,7 @@ R E N T X - offline-first app
   - [Google Signin](https://docs.expo.dev/guides/google-authentication/)
   - [Expo Web Browser](https://docs.expo.dev/versions/v49.0.0/sdk/webbrowser/)
   - [Expo Svg](https://docs.expo.dev/versions/latest/sdk/svg/)
+  - [Svg Transformer](https://github.com/kristerkari/react-native-svg-transformer)
   - [Expo Image](https://docs.expo.dev/versions/latest/sdk/image/)
   - [Netinfo](https://docs.expo.dev/versions/latest/sdk/netinfo/)
   - [Async Storage](https://docs.expo.dev/versions/latest/sdk/async-storage/)
@@ -68,6 +69,12 @@ Install Lucide and SVG<br />
 
 Install Async Storage<br />
 `npx expo install @react-native-async-storage/async-storage`<br /><br />
+
+Install Responsive Fontsize<br />
+`npm i react-native-responsive-fontsize`<br /><br />
+
+Install Iphone x helper<br />
+`npm i react-native-iphone-x-helper`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
