@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import { CarImage, CarImageWrapper, Container, 
-  ImageIndex, ImageIndexes 
-} from './styles'
+import {
+  CarImage,
+  CarImageWrapper,
+  Container,
+  ImageIndex,
+  ImageIndexes,
+} from "./styles";
 
 interface Props {
-  imagesUrl: string[]
+  imagesUrl: string[];
 }
 
-export function ImageSlider({ imagesUrl }: Props){
+export function ImageSlider({ imagesUrl }: Props) {
   return (
     <Container>
       <ImageIndexes>
@@ -19,11 +23,8 @@ export function ImageSlider({ imagesUrl }: Props){
       </ImageIndexes>
 
       <CarImageWrapper>
-        <CarImage 
-          source={{ uri: imagesUrl[0] }}
-          resizeMode="contain"
-        />
+        <CarImage source={{ uri: imagesUrl[0] }} resizeMode="contain" />
       </CarImageWrapper>
     </Container>
-  )
+  );
 }
