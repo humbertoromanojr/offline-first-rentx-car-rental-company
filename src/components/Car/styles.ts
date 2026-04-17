@@ -3,7 +3,7 @@ import { FlatList } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { TouchableOpacity } from "react-native";
 
-//import { CarDTO } from '../../dtos/CarDTO'
+import { CarDTO } from "@/dtos/CarDTO";
 
 export const Container = styled(TouchableOpacity)`
   width: 100%;
@@ -69,12 +69,9 @@ export const CarImage = styled.Image`
   height: 127px;
 `;
 
-/*
-export const CarList = styled(FlatList as new () => FlatList<CarDTO>).attrs({
+export const CarList = styled(FlatList).attrs({
   contentContainerStyle: {
-    padding: 8
+    padding: 8,
   },
   showsVerticalScrollIndicator: false,
-})`
-`;
-*/
+})``;

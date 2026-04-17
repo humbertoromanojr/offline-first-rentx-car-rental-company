@@ -1,8 +1,8 @@
 import React from "react";
 import { TouchableOpacityProps } from "react-native";
 
-//import { CarDTO } from '../../dtos/CarDTO'
-//import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
+import { CarDTO } from "@/dtos/CarDTO";
+import { getAccessoryIcon } from "@/utils/getAccessoryIcon";
 
 import {
   Container,
@@ -15,14 +15,15 @@ import {
   Price,
   Type,
   CarImage,
+  CarList,
 } from "./styles";
 
 interface Props extends TouchableOpacityProps {
-  //data: CarDTO;
+  data: CarDTO;
 }
 
 export function Car({ data, ...rest }: Props) {
-  //const MotorIcon = getAccessoryIcon(data.fuel_type);
+  const MotorIcon = getAccessoryIcon(data?.fuel_type);
 
   return (
     <Container {...rest}>
