@@ -40,6 +40,7 @@ R E N T X - offline-first app
 - [Dotenv](https://github.com/goatandsheep/react-native-dotenv)
 - [Date Fns](https://github.com/date-fns/date-fns)
 - [MongoDB Atlas](https://mongodb.com)
+- [Json Server](https://github.com/typicode/json-server)
 - [Calendars](https://github.com/wix/react-native-calendars)
 - [RealmDB](https://www.mongodb.com/docs/realm/sdk/react-native/install/)
 - [Phosphor](https://github.com/duongdev/phosphor-react-native)
@@ -81,6 +82,14 @@ Install Date fns<br />
 Install Calendars<br />
 `npm i react-native-calendars`<br />
 `npm i --save-dev @types/react-native-calendars`<br /><br />
+
+Install Navigation<br />
+`npm i @react-navigation/native`<br />
+`npx expo install react-native-screens react-native-safe-area-context`<br />
+`npm install @react-navigation/native-stack`<br /><br />
+
+Install Navigation<br />
+`npm i @json-server -g`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
