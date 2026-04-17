@@ -43,7 +43,7 @@ function Calendar({ markedDates, onDayPress }: CalendarProps) {
       renderArrow={(direction) => (
         <Feather
           size={24}
-          color={theme.colors.text}
+          color={theme.colors.textHeader}
           name={direction == "left" ? "chevron-left" : "chevron-right"}
         />
       )}
@@ -60,7 +60,7 @@ function Calendar({ markedDates, onDayPress }: CalendarProps) {
         textDayHeaderFontSize: 12,
         textMonthFontFamily: theme.fonts.secondary_600,
         textMonthFontSize: 20,
-        monthTextColor: theme.colors.title,
+        monthTextColor: theme.colors.titleBlack,
         arrowStyle: { marginHorizontal: -15 },
       }}
       firstDay={1}
