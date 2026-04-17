@@ -1,20 +1,39 @@
 import styled from "styled-components/native";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, FlatList } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
-  justify-content: center;
-  align-items: center;
+
   background-color: ${({ theme }) => theme.colors.background_primary};
 `;
 
 export const Header = styled.View`
   width: 100%;
   height: 113px;
-  justify-content: start;
+
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  padding: 32px 24px;
+  padding-top: 60px;
 
   background-color: ${({ theme }) => theme.colors.header};
 `;
+
+export const TotalCars = styled.Text`
+  font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.colors.textHeader};
+`;
+
+export const CarList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 8,
+  },
+  showsVerticalScrollIndicator: false,
+})``;
 
 export const MyCarsButton = styled(TouchableOpacity)`
   width: 60px;
