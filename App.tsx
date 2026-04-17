@@ -16,7 +16,7 @@ import {
 
 import { theme } from "@/theme";
 
-import { Home } from "@/screens/Home";
+import { Routes } from "@/routes";
 
 export default function App() {
   const [fontsLoad] = useFonts({
@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <Routes />
     </ThemeProvider>
   );
 }
