@@ -38,7 +38,9 @@ R E N T X - offline-first app
   - [Task Manager](https://docs.expo.dev/versions/latest/sdk/task-manager/)
 - [Styled Components](https://styled-components.com/docs)
 - [Dotenv](https://github.com/goatandsheep/react-native-dotenv)
+- [Date Fns](https://github.com/date-fns/date-fns)
 - [MongoDB Atlas](https://mongodb.com)
+- [Calendars](https://github.com/wix/react-native-calendars)
 - [RealmDB](https://www.mongodb.com/docs/realm/sdk/react-native/install/)
 - [Phosphor](https://github.com/duongdev/phosphor-react-native)
 - [React Navigation](https://reactnavigation.org/docs/getting-started/)
@@ -50,12 +52,9 @@ R E N T X - offline-first app
 ## Demonstration
 
 <div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1kLRKzXIMW4OnpzE4w09dKK3_kkZS59jZ" alt="" width="100%" border="0" />
+  <img src="https://drive.google.com/uc?export=view&id=1jgXXx8qCYBilQwD7CYe4-R-RbcXT5hAf" alt="" width="100%" border="0" />
 </div>
 <br />
-<div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1awKsPRJLG2a8VMr9DYlIKLts6D362Wqo" alt="" width="100%" border="0" />
-</div>
 
 ## Project Dynamics
 
@@ -75,6 +74,13 @@ Install Responsive Fontsize<br />
 
 Install Iphone x helper<br />
 `npm i react-native-iphone-x-helper`<br /><br />
+
+Install Date fns<br />
+`npm i date-fns`<br /><br />
+
+Install Calendars<br />
+`npm i react-native-calendars`<br />
+`npm i --save-dev @types/react-native-calendars`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
