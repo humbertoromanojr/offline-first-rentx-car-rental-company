@@ -1,6 +1,6 @@
-import styled from 'styled-components/native'
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled from "styled-components/native";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
@@ -42,7 +42,7 @@ export const Content = styled.View`
   padding: 0 16px;
 `;
 
-export const Appointments  = styled.View`
+export const Appointments = styled.View`
   width: 100%;
 
   flex-direction: row;
@@ -52,14 +52,14 @@ export const Appointments  = styled.View`
   padding: 24px 0;
 `;
 
-export const AppointmentsTitle  = styled.Text`
+export const AppointmentsTitle = styled.Text`
   color: ${({ theme }) => theme.colors.title};
   font-family: ${({ theme }) => theme.fonts.primary_400};
   font-size: ${RFValue(15)}px;
 `;
 
 export const AppointmentsQuantity = styled.Text`
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text_detail};
   font-family: ${({ theme }) => theme.fonts.primary_500};
   font-size: ${RFValue(15)}px;
 `;
