@@ -1,53 +1,74 @@
-import React, { useEffect, useState } from 'react'
-import { Alert } from 'react-native'
-import { useTheme } from 'styled-components'
-import { Feather } from '@expo/vector-icons'
-import { RFValue } from 'react-native-responsive-fontsize'
-import { useNavigation, useRoute } from '@react-navigation/native'
-import { format } from 'date-fns'
+import React, { useEffect, useState } from "react";
+import { Alert } from "react-native";
+import { useTheme } from "styled-components/native";
+import { Feather } from "@expo/vector-icons";
+import { RFValue } from "react-native-responsive-fontsize";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { format } from "date-fns";
 
-import { api } from '../../services/api'
-import { CarDTO } from '../../dtos/CarDTO'
-import { getAccessoryIcon } from '../../utils/getAccessoryIcon'
-import { getPlatformDate } from '../../utils/getPlatformDate'
+import { api } from "@/services/api";
+import { CarDTO } from "@/dtos/CarDTO";
+import { getAccessoryIcon } from "@/utils/getAccessoryIcon";
+import { getPlatformDate } from "@/utils/getPlatformDate";
 
-import { Accessory } from '../../components/Accessory'
-import { BackButton } from '../../components/BackButton'
-import { ImageSlider } from '../../components/ImageSlider'
-import { Button } from '../../components/Button'
+import { Accessory } from "@/components/Accessory";
+import { BackButton } from "@/components/BackButton";
+import { ImageSlider } from "@/components/ImageSlider";
+import { Button } from "@/components/Button";
 
-import { Container, Header, CarImages, Content, Details,
-Description, Brand, Name, Rent, Period, Price, RentalPeriodContainer, 
-Accessories, Footer, CalendarIcon, DateInfo, DateTitle, DateValue,
-RentalPrice, RentalPriceLabel, RentalPriceDetails, RentalPriceQuota,
-RentalPriceTotal
-} from './styles'
+import {
+  Container,
+  Header,
+  CarImages,
+  Content,
+  Details,
+  Description,
+  Brand,
+  Name,
+  Rent,
+  Period,
+  Price,
+  RentalPeriodContainer,
+  Accessories,
+  Footer,
+  CalendarIcon,
+  DateInfo,
+  DateTitle,
+  DateValue,
+  RentalPrice,
+  RentalPriceLabel,
+  RentalPriceDetails,
+  RentalPriceQuota,
+  RentalPriceTotal,
+} from "./styles";
 
 interface Params {
-  car: CarDTO
-  dates: string[]
+  car: CarDTO;
+  dates: string[];
 }
 
 interface RentalPeriod {
-  start: string
-  end: string
+  start: string;
+  end: string;
 }
 
 export function SchedulingDetails() {
-  const [loading, setLoading] = useState(false)
-  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod)
+  const [loading, setLoading] = useState(false);
+  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>(
+    {} as RentalPeriod,
+  );
 
-  const theme = useTheme()
-  const navigation = useNavigation()
-  const route = useRoute()
-  const { car, dates } = route.params as Params
+  const theme = useTheme();
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { car, dates } = route.params as Params;
 
-  const rentTotal = Number(dates.length * car.rent.price)
+  const rentTotal = Number(dates.length * car.rent.price);
 
   async function handleConfirm() {
     setLoading(true);
 
-    const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`)
+    const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
 
     const unavailable_dates = [
       ...schedulesByCar.data.unavailable_dates,
@@ -55,21 +76,25 @@ export function SchedulingDetails() {
     ];
 
     await api.post(`/schedules_byuser`, {
-      user_id: 1,
+      user_id: car.id,
       car,
-      startDate: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      ensDate: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
+      startDate: format(getPlatformDate(new Date(dates[0])), "dd/MM/yyyy"),
+      ensDate: format(
+        getPlatformDate(new Date(dates[dates.length - 1])),
+        "dd/MM/yyyy",
+      ),
     });
 
-    api.put(`/schedules_bycars/${car.id}`, {
-      id: car.id,
-      unavailable_dates
-    })
-    .then(() => navigation.navigate('SchedulingComplete'))
-    .catch(() => {
-      Alert.alert('Não foi possível confirmar o agendamento!')
-      setLoading(false);
-    })
+    api
+      .put(`/schedules_bycars/${car.id}`, {
+        id: car.id,
+        unavailable_dates,
+      })
+      .then(() => navigation.navigate("SchedulingComplete"))
+      .catch(() => {
+        Alert.alert("Não foi possível confirmar o agendamento!");
+        setLoading(false);
+      });
   }
 
   function handleBackButton() {
@@ -78,51 +103,50 @@ export function SchedulingDetails() {
 
   useEffect(() => {
     setRentalPeriod({
-      start: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      end: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy'),
-    })
-  }, [])
+      start: format(getPlatformDate(new Date(dates[0])), "dd/MM/yyyy"),
+      end: format(
+        getPlatformDate(new Date(dates[dates.length - 1])),
+        "dd/MM/yyyy",
+      ),
+    });
+  }, []);
 
   return (
     <Container>
       <Header>
-        <BackButton onPress={handleBackButton} />
+        <BackButton color={theme.colors.header} onPress={handleBackButton} />
       </Header>
 
       <CarImages>
-        <ImageSlider 
-          imagesUrl={(car.photos)}
-        />
+        <ImageSlider imagesUrl={car.photos} />
       </CarImages>
 
       <Content>
         <Details>
-         <Description>
-          <Brand>{car.brand}</Brand>
-          <Name>{car.name}</Name>
-         </Description>
+          <Description>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
+          </Description>
 
-         <Rent>
-          <Period>{car.rent.period}</Period>
-          <Price>R$ {car.rent.price}</Price>
-         </Rent>
+          <Rent>
+            <Period>{car.rent.period}</Period>
+            <Price>R$&nbsp;{car.rent.price}</Price>
+          </Rent>
         </Details>
 
         <Accessories>
-          {
-            car.accessories.map(accessory => (
-              <Accessory 
-                key={accessory.type}
-                name={accessory.name}
-                icon={getAccessoryIcon(accessory.type)}
-              />
-            ))
-          }
+          {car.accessories.map((accessory) => (
+            <Accessory
+              key={accessory.type}
+              name={accessory.name}
+              icon={getAccessoryIcon(accessory.type)}
+            />
+          ))}
         </Accessories>
 
         <RentalPeriodContainer>
           <CalendarIcon>
-            <Feather 
+            <Feather
               name="calendar"
               size={RFValue(30)}
               color={theme.colors.shape}
@@ -134,7 +158,7 @@ export function SchedulingDetails() {
             <DateValue>{rentalPeriod.start}</DateValue>
           </DateInfo>
 
-          <Feather 
+          <Feather
             name="chevron-right"
             size={RFValue(10)}
             color={theme.colors.text}
@@ -158,14 +182,14 @@ export function SchedulingDetails() {
       </Content>
 
       <Footer>
-        <Button 
-          title="Alugar agora"
+        <Button
           color={theme.colors.success}
-          onPress={handleConfirm} 
+          title="Alugar agora"
+          onPress={handleConfirm}
           disabled={!!loading}
           loading={loading}
         />
       </Footer>
     </Container>
-  )
+  );
 }
