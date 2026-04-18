@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
-
+import { useTheme } from "styled-components/native";
 import { CarDTO } from "@/dtos/CarDTO";
 import { getAccessoryIcon } from "@/utils/getAccessoryIcon";
 
@@ -32,11 +32,12 @@ interface Params {
 
 export function CarDetails() {
   const navigation = useNavigation();
+  const theme = useTheme();
   const route = useRoute();
   const { car } = route.params as Params;
 
   function handleConfirmRental() {
-    navigation.navigate("Scheduling", { car });
+    navigation.navigate("Scheduling");
   }
 
   function handleBackButton() {
@@ -46,7 +47,7 @@ export function CarDetails() {
   return (
     <Container>
       <Header>
-        <BackButton onPress={handleBackButton} />
+        <BackButton color={theme.colors.main} onPress={handleBackButton} />
       </Header>
 
       <CarImages>

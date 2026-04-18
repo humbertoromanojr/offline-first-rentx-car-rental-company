@@ -1,6 +1,9 @@
-import styled from 'styled-components/native'
-import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper'
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled from "styled-components/native";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex: 1;
@@ -25,9 +28,9 @@ export const CarImages = styled.View`
 export const Content = styled.ScrollView.attrs({
   contentContainerStyle: {
     padding: 24,
-    alignItems: 'center',
+    alignItems: "center",
   },
-  showsVerticalScrollIndicator: false
+  showsVerticalScrollIndicator: false,
 })``;
 
 export const Details = styled.View`
@@ -40,9 +43,7 @@ export const Details = styled.View`
   margin-top: 30px;
 `;
 
-export const Description = styled.View`
-  
-`;
+export const Description = styled.View``;
 
 export const Brand = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_500};
@@ -58,9 +59,7 @@ export const Name = styled.Text`
   font-size: ${RFValue(25)}px;
 `;
 
-export const Rent = styled.View`
-  
-`;
+export const Rent = styled.View``;
 
 export const Period = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_500};
@@ -78,7 +77,7 @@ export const Price = styled.Text`
 
 export const About = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary_400};
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.textBlack};
   font-size: ${RFValue(15)}px;
   text-align: justify;
 
@@ -96,7 +95,6 @@ export const Accessories = styled.View`
 
   padding-top: 16px;
 `;
-
 
 export const Footer = styled.View`
   width: 100%;
