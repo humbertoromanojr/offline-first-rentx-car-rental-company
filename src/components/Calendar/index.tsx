@@ -4,7 +4,7 @@ import { useTheme } from "styled-components/native";
 import {
   Calendar as CustomCalendar,
   LocaleConfig,
-  DateCallbackHandler,
+  DateData,
 } from "react-native-calendars";
 
 import { generateInterval } from "./generateInterval";
@@ -32,7 +32,7 @@ interface DayProps {
 
 interface CalendarProps {
   markedDates: MarkedDateProps;
-  onDayPress: DateCallbackHandler;
+  onDayPress: (date: DateData) => void;
 }
 
 function Calendar({ markedDates, onDayPress }: CalendarProps) {
