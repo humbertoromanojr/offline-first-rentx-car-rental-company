@@ -7,6 +7,7 @@ export const colors = {
   text: "#ffffff",
   textHeader: "#c8b6b6",
   text_detail: "#aeaeb3",
+  textBlack: "#222222",
   title: "#47474d",
   titleBlack: "#000000",
 
