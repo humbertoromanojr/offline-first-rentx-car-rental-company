@@ -49,8 +49,8 @@ export const MyCarsButton = styled(TouchableOpacity)`
   border-radius: 30px;
 
   position: absolute;
-  bottom: 13px;
-  right: 22px;
+  bottom: 12px;
+  right: 12px;
 
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 1);
 `;
