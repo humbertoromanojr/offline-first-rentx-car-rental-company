@@ -2,7 +2,7 @@
   <img src="https://drive.google.com/uc?export=view&id=1HL2PVLF-6NHVNqB-KX4Vahy_uQVOfa6h" alt="" width="100%" border="0" />
 <br>
 
-R E N T X - offline-first app
+# R E N T X - offline-first app
 
 </h1>
 
@@ -18,7 +18,7 @@ R E N T X - offline-first app
 ![Badge](https://img.shields.io/github/license/humbertoromanojr/offline-first-rentx-car-rental-company)
 ![Badge](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fhumbertoromanojr%2Foffline-first-rentx-car-rental-company)
 
-### Libraries
+## Libraries
 
 - <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> — Learn once, write anywhere. Create native apps for Android and iOS using React. React Native combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces.
   <br /><br />
@@ -57,9 +57,9 @@ R E N T X - offline-first app
 </div>
 <br />
 
-## Project Dynamics
+## Project Mobile
 
-## Install
+### Install
 
 Install React Native Expo <br />
 `npx create-expo-app@latest --template offline-first-rentx-car-rental-company` <br /><br />
@@ -102,6 +102,19 @@ Install node_modules <br />
 
 Run application <br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" /> `npx start`
+
+##
+
+## API - Backend
+
+Clone project to repository:<br />
+<img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
+git clone `https://github.com/orodrigogo/rentx-api-ignite`<br />
+
+<img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" /> Go to `rentx-api-ignite` folder <br />
+
+Create a script in the package.json file:<br />
+`"api": "json-server ./src/services/server.json --host your-machine-ip --port 3333"`<br />
 
 ## License
 
