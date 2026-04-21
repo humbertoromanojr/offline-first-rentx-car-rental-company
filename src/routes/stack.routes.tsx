@@ -6,12 +6,13 @@ import { SchedulingDetails } from "../screens/SchedulingDetails";
 import { SchedulingComplete } from "../screens/SchedulingComplete";
 import { CarDetails } from "../screens/CarDetails";
 import { MyCars } from "../screens/MyCars";
+import { SignIn } from "../screens/SignIn";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
 export function StackRoutes() {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
+    <Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
       <Screen name="Home" component={Home} />
 
       <Screen name="Scheduling" component={Scheduling} />
@@ -23,6 +24,8 @@ export function StackRoutes() {
       <Screen name="CarDetails" component={CarDetails} />
 
       <Screen name="MyCars" component={MyCars} />
+
+      <Screen name="SignIn" component={SignIn} />
     </Navigator>
   );
 }
