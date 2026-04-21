@@ -1,5 +1,5 @@
-import React from "react";
-import { TextInputProps } from "react-native";
+import React, { useState } from "react";
+import { TextInputProps, TouchableOpacity } from "react-native";
 import { useTheme } from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
 
@@ -10,13 +10,30 @@ interface InputProps extends TextInputProps {
 }
 
 export function PasswordInput({ iconName, ...rest }: InputProps) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+
   const theme = useTheme();
+
+  function handlePasswordVisibilityChange() {
+    setIsPasswordVisible((prevState) => !prevState);
+  }
+
   return (
     <Container>
       <IconContainer>
         <Feather name={iconName} size={24} color={theme.colors.text_detail} />
       </IconContainer>
-      <InputText {...rest} />
+      <InputText {...rest} secureTextEntry={isPasswordVisible} />
+
+      <TouchableOpacity onPress={handlePasswordVisibilityChange}>
+        <IconContainer>
+          <Feather
+            name={isPasswordVisible ? "eye" : "eye-off"}
+            size={24}
+            color={theme.colors.text_detail}
+          />
+        </IconContainer>
+      </TouchableOpacity>
     </Container>
   );
 }
