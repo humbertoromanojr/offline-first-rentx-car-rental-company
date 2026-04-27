@@ -43,7 +43,6 @@ export function SignUpSecondStep() {
   const route = useRoute();
 
   const { user } = route.params as Params;
-  console.log(user);
 
   function handleBack() {
     navigation.goBack();
@@ -55,12 +54,18 @@ export function SignUpSecondStep() {
         password: Yup.string().required("Senha obrigatório"),
         passwordConfirm: Yup.string().required("Confirme a senha obrigatório"),
       });
+      await schema.validate({ password, passwordConfirm });
 
       if (password != passwordConfirm) {
         return Alert.alert("As senhas não são iguais");
       }
 
-      await schema.validate({ passwordConfirm, password });
+      // send params to API and register
+      navigation.navigate("Confirmation", {
+        nextScreenRoute: "SignIn",
+        title: "Conta criada!",
+        message: `Agora é só fazer login\ne aproveitar`,
+      });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert("Ops: ", error.message);
@@ -68,10 +73,6 @@ export function SignUpSecondStep() {
         Alert.alert("Erro ao cadastrar: ", "Verifique as credenciais");
       }
     }
-  }
-
-  function handleNextStep() {
-    navigation.navigate("SignUpSecondStep");
   }
 
   return (
