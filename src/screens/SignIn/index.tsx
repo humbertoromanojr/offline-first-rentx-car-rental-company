@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import {
   StatusBar,
   KeyboardAvoidingView,
@@ -21,6 +22,8 @@ export function SignIn() {
 
   const theme = useTheme();
 
+  const navigation = useNavigation();
+
   async function handleSigIn() {
     try {
       const schema = Yup.object().shape({
@@ -38,6 +41,10 @@ export function SignIn() {
         Alert.alert("Erro na autenticação: ", "Verifique as credenciais");
       }
     }
+  }
+
+  function handleNewAccount() {
+    navigation.navigate("SignUpFirstStep");
   }
 
   return (
@@ -90,7 +97,7 @@ export function SignIn() {
 
             <Button
               title="Criar conta gratuita"
-              onPress={() => {}}
+              onPress={handleNewAccount}
               enabled={false}
               loading={false}
               color={theme.colors.background_secondary}
