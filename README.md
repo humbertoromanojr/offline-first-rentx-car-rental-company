@@ -36,10 +36,12 @@
   - [Location](https://docs.expo.dev/versions/latest/sdk/location/)
   - [Map View](https://docs.expo.dev/versions/latest/sdk/map-view/)
   - [Task Manager](https://docs.expo.dev/versions/latest/sdk/task-manager/)
+  - [Splash Screen](https://docs.expo.dev/versions/latest/sdk/splash-screen/)
 - [Styled Components](https://styled-components.com/docs)
 - [Dotenv](https://github.com/goatandsheep/react-native-dotenv)
 - [Date Fns](https://github.com/date-fns/date-fns)
 - [MongoDB Atlas](https://mongodb.com)
+- [Yup](https://github.com/jquense/yup)
 - [Json Server](https://github.com/typicode/json-server)
 - [Calendars](https://github.com/wix/react-native-calendars)
 - [RealmDB](https://www.mongodb.com/docs/realm/sdk/react-native/install/)
@@ -90,6 +92,12 @@ Install Navigation<br />
 
 Install Navigation<br />
 `npm i @json-server -g`<br /><br />
+
+Install Splash screen<br />
+`npx expo install expo-splash-screen`<br /><br />
+
+Install Yup: runtime value parsing and validation<br />
+`npm i yup`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
