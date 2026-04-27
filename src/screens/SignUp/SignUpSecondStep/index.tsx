@@ -9,6 +9,8 @@ import {
 import { useNavigation, useRoute } from "@react-navigation/native";
 import * as Yup from "yup";
 
+import { api } from "@/services/api";
+
 import { Button } from "@/components/Button";
 import { PasswordInput } from "@/components/PasswordInput";
 import { BackButton } from "@/components/BackButton";
@@ -60,12 +62,21 @@ export function SignUpSecondStep() {
         return Alert.alert("As senhas não são iguais");
       }
 
-      // send params to API and register
-      navigation.navigate("Confirmation", {
-        nextScreenRoute: "SignIn",
-        title: "Conta criada!",
-        message: `Agora é só fazer login\ne aproveitar`,
-      });
+      await api
+        .post("/users", {
+          name: user.name,
+          email: user.email,
+          driver_license: user.driverLicense,
+          password,
+        })
+        .then(() => {
+          // send params to API and register
+          navigation.navigate("Confirmation", {
+            nextScreenRoute: "SignIn",
+            title: "Conta criada!",
+            message: `Agora é só fazer login\ne aproveitar`,
+          });
+        });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert("Ops: ", error.message);
