@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import {
   StatusBar,
   KeyboardAvoidingView,
@@ -10,16 +11,29 @@ import * as Yup from "yup";
 
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
-import { PasswordInput } from "@/components/PasswordInput";
+import { BackButton } from "@/components/BackButton";
+import { Bullet } from "@/components/Bullet";
 
 import { useTheme } from "styled-components/native";
-import { Container, Header, Title, SubTitle, Form, Footer } from "./styles";
+import {
+  Container,
+  Header,
+  Steps,
+  Form,
+  Footer,
+  Title,
+  SubTitle,
+  FormTitle,
+} from "./styles";
 
-export function SignUp() {
+export function SignUpFirstStep() {
+  const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const theme = useTheme();
+
+  const navigation = useNavigation();
 
   async function handleSigUp() {
     try {
@@ -40,6 +54,14 @@ export function SignUp() {
     }
   }
 
+  function handleBack() {
+    navigation.goBack();
+  }
+
+  function handleLogin() {
+    navigation.navigate("SignIn");
+  }
+
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -50,13 +72,29 @@ export function SignUp() {
             translucent
           />
           <Header>
-            <Title>Estamos {"\n"}quase lá.</Title>
-            <SubTitle>
-              Faça seu login para começar{"\n"}uma experiência incrível.
-            </SubTitle>
+            <BackButton onPress={handleBack} />
+            <Steps>
+              <Bullet />
+              <Bullet />
+            </Steps>
           </Header>
 
+          <Title>Crie sua{"\n"}conta</Title>
+          <SubTitle>Faça seu cadastro de{"\n"}forma rápida e fácil</SubTitle>
+
           <Form>
+            <FormTitle>1. Dados</FormTitle>
+            <Input
+              iconName="user"
+              placeholder="Name"
+              placeholderTextColor={theme.colors.text_detail}
+              keyboardType="default"
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={setUser}
+              value={user}
+            />
+
             <Input
               iconName="mail"
               placeholder="E-mail"
@@ -68,12 +106,12 @@ export function SignUp() {
               value={email}
             />
 
-            <PasswordInput
-              iconName="lock"
-              placeholder="Senha"
-              secureTextEntry
+            <Input
+              iconName="credit-card"
+              placeholder="CNH"
               placeholderTextColor={theme.colors.text_detail}
               autoCorrect={false}
+              keyboardType="numeric"
               autoCapitalize="none"
               onChangeText={setPassword}
               value={password}
@@ -82,15 +120,15 @@ export function SignUp() {
 
           <Footer>
             <Button
-              title="Login"
+              title="Cadastrar"
               onPress={handleSigUp}
               enabled={true}
               loading={false}
             />
 
             <Button
-              title="Criar conta gratuita"
-              onPress={() => {}}
+              title="Já possuo conta"
+              onPress={handleLogin}
               enabled={false}
               loading={false}
               color={theme.colors.background_secondary}
