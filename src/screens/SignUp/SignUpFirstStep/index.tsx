@@ -27,24 +27,36 @@ import {
 } from "./styles";
 
 export function SignUpFirstStep() {
-  const [user, setUser] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [driverLicense, setDriverLicense] = useState("");
 
   const theme = useTheme();
 
   const navigation = useNavigation();
 
-  async function handleSigUp() {
+  function handleBack() {
+    navigation.goBack();
+  }
+
+  async function handleNextStep() {
     try {
       const schema = Yup.object().shape({
+        driverLicense: Yup.string().required("CNH obrigatório"),
         email: Yup.string()
           .required("Email obrigatório")
           .email("Digite um email válido"),
-        password: Yup.string().required("Senha obrigatório"),
+        name: Yup.string().required("Nome obrigatório"),
       });
 
-      await schema.validate({ email, password });
+      const data = { name, email, driverLicense };
+      await schema.validate(data);
+
+      navigation.navigate("SignUpSecondStep", { user: data });
+
+      setDriverLicense("");
+      setEmail("");
+      setName("");
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert("Ops: ", error.message);
@@ -52,14 +64,6 @@ export function SignUpFirstStep() {
         Alert.alert("Erro na autenticação: ", "Verifique as credenciais");
       }
     }
-  }
-
-  function handleBack() {
-    navigation.goBack();
-  }
-
-  function handleLogin() {
-    navigation.navigate("SignIn");
   }
 
   return (
@@ -91,8 +95,8 @@ export function SignUpFirstStep() {
               keyboardType="default"
               autoCorrect={false}
               autoCapitalize="none"
-              onChangeText={setUser}
-              value={user}
+              onChangeText={setName}
+              value={name}
             />
 
             <Input
@@ -113,26 +117,17 @@ export function SignUpFirstStep() {
               autoCorrect={false}
               keyboardType="numeric"
               autoCapitalize="none"
-              onChangeText={setPassword}
-              value={password}
+              onChangeText={setDriverLicense}
+              value={driverLicense}
             />
           </Form>
 
           <Footer>
             <Button
-              title="Cadastrar"
-              onPress={handleSigUp}
+              title="Próximo"
+              onPress={handleNextStep}
               enabled={true}
               loading={false}
-            />
-
-            <Button
-              title="Já possuo conta"
-              onPress={handleLogin}
-              enabled={false}
-              loading={false}
-              color={theme.colors.background_secondary}
-              light
             />
           </Footer>
         </Container>
