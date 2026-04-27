@@ -1,7 +1,9 @@
 import "react-native-gesture-handler";
-import { ThemeProvider } from "styled-components";
 import React from "react";
+import { ThemeProvider } from "styled-components";
 import AppLoading from "expo-app-loading";
+
+import { AppProvider } from "@/hooks";
 
 import {
   Archivo_400Regular,
@@ -33,7 +35,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
+      <AppProvider>
+        <Routes />
+      </AppProvider>
     </ThemeProvider>
   );
 }
