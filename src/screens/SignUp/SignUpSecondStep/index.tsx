@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import {
   StatusBar,
   KeyboardAvoidingView,
@@ -7,10 +6,11 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import * as Yup from "yup";
 
 import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
+import { PasswordInput } from "@/components/PasswordInput";
 import { BackButton } from "@/components/BackButton";
 import { Bullet } from "@/components/Bullet";
 
@@ -26,40 +26,52 @@ import {
   FormTitle,
 } from "./styles";
 
-export function SignUpSecondStep() {
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+interface Params {
+  user: {
+    name: string;
+    email: string;
+    driverLicense: string;
+  };
+}
 
-  const theme = useTheme();
+export function SignUpSecondStep() {
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const navigation = useNavigation();
+  const theme = useTheme();
+  const route = useRoute();
 
-  async function handleSigUp() {
-    try {
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .required("Email obrigatório")
-          .email("Digite um email válido"),
-        password: Yup.string().required("Senha obrigatório"),
-      });
-
-      await schema.validate({ email, password });
-    } catch (error) {
-      if (error instanceof Yup.ValidationError) {
-        Alert.alert("Ops: ", error.message);
-      } else {
-        Alert.alert("Erro na autenticação: ", "Verifique as credenciais");
-      }
-    }
-  }
+  const { user } = route.params as Params;
+  console.log(user);
 
   function handleBack() {
     navigation.goBack();
   }
 
-  function handleLogin() {
-    navigation.navigate("SignIn");
+  async function handleRegister() {
+    try {
+      const schema = Yup.object().shape({
+        password: Yup.string().required("Senha obrigatório"),
+        passwordConfirm: Yup.string().required("Confirme a senha obrigatório"),
+      });
+
+      if (password != passwordConfirm) {
+        return Alert.alert("As senhas não são iguais");
+      }
+
+      await schema.validate({ passwordConfirm, password });
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        Alert.alert("Ops: ", error.message);
+      } else {
+        Alert.alert("Erro ao cadastrar: ", "Verifique as credenciais");
+      }
+    }
+  }
+
+  function handleNextStep() {
+    navigation.navigate("SignUpSecondStep");
   }
 
   return (
@@ -83,56 +95,37 @@ export function SignUpSecondStep() {
           <SubTitle>Faça seu cadastro de{"\n"}forma rápida e fácil</SubTitle>
 
           <Form>
-            <FormTitle>1. Dados</FormTitle>
-            <Input
-              iconName="user"
-              placeholder="Name"
+            <FormTitle>2. Senha</FormTitle>
+            <PasswordInput
+              iconName="lock"
+              placeholder="Senha"
               placeholderTextColor={theme.colors.text_detail}
               keyboardType="default"
               autoCorrect={false}
               autoCapitalize="none"
-              onChangeText={setUser}
-              value={user}
-            />
-
-            <Input
-              iconName="mail"
-              placeholder="E-mail"
-              placeholderTextColor={theme.colors.text_detail}
-              keyboardType="email-address"
-              autoCorrect={false}
-              autoCapitalize="none"
-              onChangeText={setEmail}
-              value={email}
-            />
-
-            <Input
-              iconName="credit-card"
-              placeholder="CNH"
-              placeholderTextColor={theme.colors.text_detail}
-              autoCorrect={false}
-              keyboardType="numeric"
-              autoCapitalize="none"
               onChangeText={setPassword}
               value={password}
+            />
+
+            <PasswordInput
+              iconName="lock"
+              placeholder="Repetir senha"
+              placeholderTextColor={theme.colors.text_detail}
+              keyboardType="default"
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={setPasswordConfirm}
+              value={passwordConfirm}
             />
           </Form>
 
           <Footer>
             <Button
               title="Cadastrar"
-              onPress={handleSigUp}
+              onPress={handleRegister}
+              color={theme.colors.success}
               enabled={true}
               loading={false}
-            />
-
-            <Button
-              title="Já possuo conta"
-              onPress={handleLogin}
-              enabled={false}
-              loading={false}
-              color={theme.colors.background_secondary}
-              light
             />
           </Footer>
         </Container>
