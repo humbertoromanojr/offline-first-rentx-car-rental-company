@@ -35,12 +35,12 @@ function AuthProvider({ children }: AuthProviderProps) {
   const [data, setData] = useState<AuthState>({} as AuthState);
 
   async function signIn({ email, password }: SignInCredentials) {
-    const resp = await api.post("/sessions", {
+    const response = await api.post("/sessions", {
       email,
       password,
     });
 
-    console.log("===== RESP: ", resp.data);
+    console.log(response.data);
   }
 
   return (

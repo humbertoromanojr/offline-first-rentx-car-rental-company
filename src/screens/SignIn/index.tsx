@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import * as Yup from "yup";
 
+import { useAuth } from "@/hooks/auth";
+
 import { Button } from "@/components/Button";
 import { Input } from "@/components/Input";
 import { PasswordInput } from "@/components/PasswordInput";
@@ -24,16 +26,20 @@ export function SignIn() {
 
   const navigation = useNavigation();
 
+  const { signIn } = useAuth();
+
   async function handleSigIn() {
     try {
       const schema = Yup.object().shape({
+        password: Yup.string().required("Senha obrigatório"),
         email: Yup.string()
           .required("Email obrigatório")
           .email("Digite um email válido"),
-        password: Yup.string().required("Senha obrigatório"),
       });
 
       await schema.validate({ email, password });
+
+      signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         Alert.alert("Ops: ", error.message);

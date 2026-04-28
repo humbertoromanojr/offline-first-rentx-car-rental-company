@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { AuthProvider } from "./auth";
+import { AuthProvider } from "@/hooks/auth";
 
 interface AppProviderProps {
   children: ReactNode;
