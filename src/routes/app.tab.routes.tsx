@@ -1,0 +1,21 @@
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import { AppStackRoutes } from "./app.stack.routes";
+
+import { Home } from "../screens/Home";
+import { MyCars } from "../screens/MyCars";
+import { Profile } from "../screens/Profile";
+
+const { Navigator, Screen } = createBottomTabNavigator();
+
+export function AppTabRoutes() {
+  return (
+    <Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+      <Screen name="Home" component={AppStackRoutes} />
+
+      <Screen name="Profile" component={Profile} />
+
+      <Screen name="MyCars" component={MyCars} />
+    </Navigator>
+  );
+}
