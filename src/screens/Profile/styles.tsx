@@ -1,0 +1,56 @@
+import styled from "styled-components/native";
+import { TouchableOpacity, FlatList } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
+
+import { CarDTO } from "@/dtos/CarDTO";
+
+export const Container = styled.View`
+  flex: 1;
+
+  background-color: ${({ theme }) => theme.colors.background_primary};
+`;
+
+export const Header = styled.View`
+  width: 100%;
+  height: 113px;
+
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  padding: 32px 24px;
+  padding-top: 60px;
+
+  background-color: ${({ theme }) => theme.colors.header};
+`;
+
+export const TotalCars = styled.Text`
+  font-size: ${RFValue(12)}px;
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.colors.textHeader};
+`;
+
+export const CarList = styled(FlatList<CarDTO>).attrs({
+  contentContainerStyle: {
+    padding: 8,
+  },
+  showsVerticalScrollIndicator: false,
+})``;
+
+export const MyCarsButton = styled(TouchableOpacity)`
+  width: 60px;
+  height: 60px;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: ${({ theme }) => theme.colors.main};
+
+  border-radius: 30px;
+
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 1);
+`;
