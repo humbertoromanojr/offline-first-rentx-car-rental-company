@@ -22,6 +22,7 @@
     "expo": "~54.0.33",
     "expo-app-loading": "^2.1.1",
     "expo-font": "~14.0.11",
+    "expo-image-picker": "~17.0.11",
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
     "json-server": "^1.0.0-beta.15",
