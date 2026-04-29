@@ -17,7 +17,6 @@ export function AppTabRoutes() {
 
   return (
     <Navigator
-      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -31,7 +30,7 @@ export function AppTabRoutes() {
       }}
     >
       <Screen
-        name="Home"
+        name="HomeStack"
         component={AppStackRoutes}
         options={{
           tabBarIcon: ({ color }) => (
